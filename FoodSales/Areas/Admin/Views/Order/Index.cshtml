@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form id="form" asp-controller="Order" asp-action="Upload" method="post" enctype="multipart/form-data" hidden>
+    <input id="upload" type="file" name="file" class="form-control"/>
+</form>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Order</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a onclick="ImportFile();" class="btn btn-primary"><i class="bi bi-plus-circle"></i>&nbsp;Import order</a>
+            <a asp-controller="Order" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i>&nbsp;Create New Order</a>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                    Start Date:  <input type="text" id="min" name="min" class="form-control">
+                </div>
+            <div class="col-3">
+                End Date: <input type="text" id="max" name="max" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/><br/>
+
+<table id="tblData" class="table table-bordered table-striped" style="width: 100%">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+            <th style="text-align: center">Action</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- Modal -->
+
+@*    <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Import excel file</h5>
+                </div>
+                
+                <div class="modal-body">
+                    <input id="upload" type="file" name="file" class="form-control" title="Import order"/>
+                </div>
+
+                <div class="modal-footer text-center">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>&nbsp;Import order</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            
+            </div>
+        </div>
+    </div>*@
+
+
+@section Scripts{
+    <script src="~/js/order.js"></script>
+    <script type="text/javascript">
+        function ImportFile() {
+            $('#upload').click();
+        }
+
+        document.getElementById("upload").onchange = function () {
+            document.getElementById("form").submit();
+        };
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿@using FoodSales.Utility
+@model Order
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-controller="Order" asp-action="Create">
+    <div class="container col-6">
+        <div class="border row p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">Create Order</h2>
+                <hr/>
+            </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3 col-6">
+                <label asp-for="Region"></label>
+                <select asp-for="Region" asp-items="Html.GetEnumSelectList<OrderEnum.Region>()" class="form-select">
+                    <option disable selected>-Select Region-</option>
+                </select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="City"></label>
+                <select asp-for="City" asp-items="Html.GetEnumSelectList<OrderEnum.City>()" class="form-select">
+                    <option disable selected>-Select City-</option>
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 col-6">
+                <label asp-for="Category"></label>
+                <select asp-for="Category" asp-items="Html.GetEnumSelectList<OrderEnum.Category>()" class="form-select">
+                    <option disable selected>-Select Category-</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 col-6">
+                <label asp-for="Product"></label>
+                <select asp-for="Product" asp-items="Html.GetEnumSelectList<OrderEnum.Product>()" class="form-select">
+                    <option disable selected>-Select Product-</option>
+                </select>
+                <span asp-validation-for="Product" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 col-4">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="UnitPrice"></label>
+                <input asp-for="UnitPrice" class="form-control" />
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="TotalPrice"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3 col-7">
+                <button type="submit" class="btn btn-primary" style="width: 100%" asp-controller="Order" asp-action="Create">Create</button>
+            </div>
+            <div class="mb-3 col-5">
+                <a class="btn btn-danger" style="width: 100%" asp-controller="Order" asp-action="Index">Back To List</a>
+                </div>
+        </div>
+        
+       
+        
+    </div>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

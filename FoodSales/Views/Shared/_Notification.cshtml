@@ -1,0 +1,31 @@
+﻿@{
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	
+    if (TempData["CreateSuccess"] != null)
+    {
+        <script type="text/javascript">
+            toastr.success('@TempData["CreateSuccess"]')
+        </script>
+    }
+
+	if (TempData["EditSuccess"] != null)
+	{
+		<script type="text/javascript">
+			toastr.success('@TempData["EditSuccess"]')
+		</script>
+	}
+
+	if (TempData["RemoveSuccess"] != null)
+	{
+		<script type="text/javascript">
+			toastr.success('@TempData["RemoveSuccess"]')
+		</script>
+	}
+
+	if(TempData["Error"] != null)
+	{
+		<script type="text/javascript">
+				toastr.success('@TempData["Error"]')
+		</script>
+	}
+}
